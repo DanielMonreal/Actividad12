@@ -1,22 +1,29 @@
 <template>
   <div id="app">
     <h1>Chuck Norris Jokes</h1>
-    <ul>
-      <li v-for="(joke, index) in chuck" :key="index">{{ joke.value }}</li>
-    </ul>
+    <div class="container">
+      <div class="row">
+        <chuck-card v-for="(joke, index) in chuck" :key="index" :icon-url="joke.icon_url" :value="joke.value"></chuck-card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import ChuckCard from './components/ChuckCard.vue';
+
 export default {
+  components: {
+    ChuckCard
+  },
   data() {
     return {
       chuck: [
-        { "value": "Chuck Norris can skydive into outer space." },
-        { "value": "The chief export of Chuck Norris is pain." },
-        { "value": "Chuck Norris doesn't read books. He stares them down until he gets the information he wants." },
-        { "value": "Time waits for no man. Unless that man is Chuck Norris." },
-        { "value": "If you spell Chuck Norris in Scrabble, you win. Forever." },
+        { "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png", "value": "Chuck Norris can skydive into outer space." },
+        { "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png", "value": "The chief export of Chuck Norris is pain." },
+        { "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png", "value": "Chuck Norris doesn't read books. He stares them down until he gets the information he wants." },
+        { "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png", "value": "Time waits for no man. Unless that man is Chuck Norris." },
+        { "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png", "value": "If you spell Chuck Norris in Scrabble, you win. Forever." },
       ]
     }
   }
@@ -24,7 +31,6 @@ export default {
 </script>
 
 <style scoped>
-/* Agrega estilos CSS aquí si lo deseas */
 #app {
   text-align: center;
 }
@@ -35,12 +41,29 @@ h1 {
   padding: 20px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-li {
-  margin-bottom: 10px;
+.row {
+  margin-bottom: 20px;
+}
+
+/* Estilos para cada tarjeta */
+.chuck-card {
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.card-img-top {
+  max-width: 100%;
+}
+
+.card-text {
+  margin-top: 10px;
 }
 </style>
